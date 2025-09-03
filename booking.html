@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Equipment - AgriRent</title>
+    <link rel="stylesheet" href="booking.css">
+</head>
+<body>
+
+    <header>
+        <h1>AgriRent</h1>
+        <nav>
+            <ul class="nav-bar">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="equipment.html">Equipment</a></li>
+                <li><a href="booking.html">Book Now</a></li>
+                <li><a href="login.html">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h2>Book Your Equipment</h2>
+        <form class="booking-form">
+            <label for="name">Full Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="phone">Phone Number:</label>
+            <input type="text" id="phone" name="phone" required>
+
+            <label for="address">Delivery Address:</label>
+            <input type="text" id="address" name="address" required>
+
+            <label for="equipment">Select Equipment:</label>
+            <select id="equipment" name="equipment" required>
+                <option value="" disabled selected>-- Choose Equipment --</option>
+                <option value="Tractor">Tractor</option>
+                <option value="Tiller">Tiller</option>
+                <option value="Harvester">Harvester</option>
+                <option value="Plough">Plough</option>
+                <option value="Seeder">Seeder</option>
+                <option value="Sprayer">Sprayer</option>
+                <option value="Rotavator">Rotavator</option>
+                <option value="Cultivator">Cultivator</option>
+                <option value="Baler">Baler</option>
+                <option value="Axe">Axe</option>
+                <option value="thresher">thresher</option>
+                <option value="gardening-tools">gardening-tools</option>
+            </select>
+
+            <label for="rental-days">Number of Days:</label>
+            <input type="number" id="rental-days" name="rental-days" min="1" required>
+
+            <button type="submit">Confirm Booking</button>
+        </form>
+    </main>
+
+    <footer>&copy; 2025 AgriRent. All Rights Reserved.</footer>
+
+</body>
+</html>

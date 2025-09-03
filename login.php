@@ -1,0 +1,77 @@
+<?php include('server.php')?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgriRent - Login</title>
+    <link rel="stylesheet" href="login.css">
+</head>
+<body>
+    <header>
+        <h1>Login to AgriRent</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="equipment.html">Equipment</a></li>
+                <li><a href="booking.html">Book Now</a></li>
+                <li><a href="login.html">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="login-form">
+        <h2>User Login</h2>
+        <form action="login.php" method="POST">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+
+            <button type="submit" class="btn">Login</button>
+        </form>
+        <p>Don't have an account? <a href="register.html">Register here</a></p>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 AgriRent. </p>
+    </footer>
+    <?php
+// Start session
+session_start();
+
+// Database connection
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "agrirent"; // Make sure your DB name is correct
+
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Check DB connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+// Login form submission
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+
+    // Check credentials
+    $sql = "SELECT * FROM users WHERE email = '$email' AND password = '$password'"; // For better security, use hashed passwords
+    $result = $conn->query($sql);
+
+    if ($result->num_rows == 1) {
+        $_SESSION['email'] = $email;
+        echo "<script>alert('Login successful!'); window.location.href='index.html';</script>";
+    } else {
+        echo "<script>alert('Invalid email or password');</script>";
+    }
+}
+?>
+
+</body>
+</html>
